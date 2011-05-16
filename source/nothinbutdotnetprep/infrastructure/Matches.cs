@@ -2,3 +2,4 @@
 {
   public delegate bool Matches<in ItemToFilter>(ItemToFilter item); 
 }
+
