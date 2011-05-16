@@ -17,10 +17,16 @@ namespace nothinbutdotnetprep.collections
             return movies;
         }
 
-
         public void add(Movie movie)
         {
-            throw new NotImplementedException();
+            bool alreadyExists = false;
+            
+            foreach(Movie m in movies)
+                if (m == movie)
+                    alreadyExists = true;
+
+            if (!alreadyExists)
+                movies.Add(movie);
         }
 
         public IEnumerable<Movie> sort_all_movies_by_title_descending
@@ -65,12 +71,12 @@ namespace nothinbutdotnetprep.collections
 
         public IEnumerable<Movie> all_kid_movies()
         {
-            throw new NotImplementedException();
+            return FilterMoviesByGenre(Genre.kids);
         }
 
         public IEnumerable<Movie> all_action_movies()
         {
-            throw new NotImplementedException();
+            return FilterMoviesByGenre(Genre.action);
         }
 
         public IEnumerable<Movie> sort_all_movies_by_date_published_descending()
@@ -81,6 +87,21 @@ namespace nothinbutdotnetprep.collections
         public IEnumerable<Movie> sort_all_movies_by_date_published_ascending()
         {
             throw new NotImplementedException();
+        }
+
+        private IEnumerable<Movie> FilterMoviesByGenre(Genre genre)
+        {
+            IList<Movie> moviesToReturn = new List<Movie>();
+
+            foreach (var movie in movies)
+            {
+                if (movie.genre.Equals(Genre.kids))
+                {
+                    moviesToReturn.Add(movie);
+                }
+            }
+
+            return moviesToReturn;
         }
     }
 }
