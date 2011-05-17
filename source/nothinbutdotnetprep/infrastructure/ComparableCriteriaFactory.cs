@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace nothinbutdotnetprep.infrastructure
 {
@@ -8,17 +9,20 @@ namespace nothinbutdotnetprep.infrastructure
   {
     PropertyAccessor<ItemToFilter, PropertyType> accessor;
     ICreateSpecifications<ItemToFilter, PropertyType> original;
+    private readonly AnonymousCriteriaFactory<ItemToFilter> anonymousCriteriaFactory;
 
     public ComparableCriteriaFactory(PropertyAccessor<ItemToFilter, PropertyType> accessor,
-                                     ICreateSpecifications<ItemToFilter, PropertyType> original)
+                                     ICreateSpecifications<ItemToFilter, PropertyType> original,
+                                      AnonymousCriteriaFactory<ItemToFilter> anonymousCriteriaFactory)
     {
       this.accessor = accessor;
       this.original = original;
+      this.anonymousCriteriaFactory = anonymousCriteriaFactory;
     }
 
     public IMatchAn<ItemToFilter> greater_than(PropertyType value)
     {
-      return new AnonymousCriteria<ItemToFilter>(x => accessor(x).CompareTo(value) > 0);
+      return anonymousCriteriaFactory.CreateCriteria(x => accessor(x).CompareTo(value) > 0);
     }
 
     public IMatchAn<ItemToFilter> equal_to(PropertyType value)
@@ -39,7 +43,7 @@ namespace nothinbutdotnetprep.infrastructure
     public IMatchAn<ItemToFilter> between(PropertyType start, PropertyType end)
     {
       return
-        new AnonymousCriteria<ItemToFilter>(x => accessor(x).CompareTo(start) >= 0 && accessor(x).CompareTo(end) <= 0);
+        anonymousCriteriaFactory.CreateCriteria(x => accessor(x).CompareTo(start) >= 0 && accessor(x).CompareTo(end) <= 0);
     }
   }
 }
