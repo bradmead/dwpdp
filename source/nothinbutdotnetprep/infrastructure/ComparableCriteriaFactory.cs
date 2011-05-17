@@ -6,21 +6,19 @@ namespace nothinbutdotnetprep.infrastructure
     where PropertyType : IComparable<PropertyType>
 
   {
+    PropertyAccessor<ItemToFilter, PropertyType> accessor;
     ICreateSpecifications<ItemToFilter, PropertyType> original;
 
-    public ComparableCriteriaFactory(ICreateSpecifications<ItemToFilter, PropertyType> original)
+    public ComparableCriteriaFactory(PropertyAccessor<ItemToFilter, PropertyType> accessor,
+                                     ICreateSpecifications<ItemToFilter, PropertyType> original)
     {
+      this.accessor = accessor;
       this.original = original;
     }
 
     public IMatchAn<ItemToFilter> greater_than(PropertyType value)
     {
-      return create_using(new IsGreaterThan<PropertyType>(value));
-    }
-
-    public IMatchAn<ItemToFilter> between(PropertyType start, PropertyType end)
-    {
-      return create_using(new IsBetween<PropertyType>(start, end));
+      return original.create_using(x => accessor(x).CompareTo(value) > 0);
     }
 
     public IMatchAn<ItemToFilter> equal_to(PropertyType value)
@@ -38,9 +36,16 @@ namespace nothinbutdotnetprep.infrastructure
       return original.not_equal_to(value);
     }
 
-    public IMatchAn<ItemToFilter> create_using(IMatchAn<PropertyType> criteria)
+    public IMatchAn<ItemToFilter> between(PropertyType start, PropertyType end)
     {
-      return original.create_using(criteria);
+      return
+        original.create_using(
+          x => accessor(x).CompareTo(start) >= 0 && accessor(x).CompareTo(end) <= 0);
+    }
+
+    public IMatchAn<ItemToFilter> create_using(Matches<ItemToFilter> condition)
+    {
+      return original.create_using(condition);
     }
   }
 }
