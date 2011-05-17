@@ -264,8 +264,6 @@ namespace nothinbutdotnetprep.specs
 
         var results = sut.all_movies().all_matching(criteria);
 
-
-
         results.ShouldContainOnly(a_bugs_life, shrek, cars);
       };
 
@@ -275,9 +273,6 @@ namespace nothinbutdotnetprep.specs
                                    .equal_to(Genre.action);
 
         var results = sut.all_movies().all_matching(criteria);
-
-
-
 
         results.ShouldContainOnly(indiana_jones_and_the_temple_of_doom, pirates_of_the_carribean);
       };

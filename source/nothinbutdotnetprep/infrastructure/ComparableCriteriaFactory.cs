@@ -3,7 +3,6 @@ using System;
 namespace nothinbutdotnetprep.infrastructure
 {
   public class ComparableCriteriaFactory<ItemToFilter, PropertyType> where PropertyType : IComparable<PropertyType>
-
   {
     PropertyAccessor<ItemToFilter, PropertyType> accessor;
 
