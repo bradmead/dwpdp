@@ -18,6 +18,11 @@ namespace nothinbutdotnetprep.infrastructure
       return all_matching(items, condition.matches);
     }
 
+    public static IEnumerable<T> where<T>(this IEnumerable<T> items, IMatchAn<T> condition)
+    {
+      return all_matching(items, condition.matches);
+    }
+
     static IEnumerable<T> all_matching<T>(this IEnumerable<T> items, Matches<T> condition) 
     {
       foreach (T item in items) if (condition(item)) yield return item;

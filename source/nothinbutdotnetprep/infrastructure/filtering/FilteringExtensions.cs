@@ -24,12 +24,18 @@ namespace nothinbutdotnetprep.infrastructure.filtering
       return create_using(extension_point, new EqualToAny<PropertyType>(values));
     }
 
+    public static IMatchAn<ItemToFilter> where<ItemToFilter, PropertyType>(
+      this IProvideAccessToFilteringBehaviour<ItemToFilter, PropertyType> extension_point, params PropertyType[] values)
+    {
+      return create_using(extension_point, new EqualToAny<PropertyType>(values));
+    }
+
     public static IMatchAn<ItemToFilter> create_using<ItemToFilter, PropertyType>(
       this IProvideAccessToFilteringBehaviour<ItemToFilter, PropertyType> extension_point, IMatchAn<PropertyType> criteria)
     {
       return extension_point.create_criteria_using(criteria);
     }
-
+    
     public static IMatchAn<ItemToFilter> greater_than<ItemToFilter,PropertyType>(this IProvideAccessToFilteringBehaviour<ItemToFilter,PropertyType> extension_point,PropertyType value) where PropertyType : IComparable<PropertyType>
     {
       return create_using(extension_point,new FallsInRange<PropertyType>(new ExclusiveRangeWithNoUpperBound<PropertyType>(value)));
