@@ -1,4 +1,7 @@
-﻿namespace nothinbutdotnetprep.infrastructure.filtering
+﻿using System;
+using nothinbutdotnetprep.infrastructure.ranges;
+
+namespace nothinbutdotnetprep.infrastructure.filtering
 {
   public class CriteriaFactory<ItemToFilter, PropertyType> : ICreateSpecifications<ItemToFilter, PropertyType>
   {
@@ -24,12 +27,19 @@
       return new PropertyCriteria<ItemToFilter, PropertyType>(accessor, criteria);
     }
 
+    public IMatchAn<ItemToFilter> greater_than(PropertyType value)
+    {
+      return create_using(new FallsInRange<PropertyType>(new ExclusiveRangeWithNoUpperBound<PropertyType>(value)));
+    }
+
+    public IMatchAn<ItemToFilter> between(PropertyType start, PropertyType end)
+    {
+      return create_using(new FallsInRange<PropertyType>(new InclusiveRange<PropertyType>(start, end)));
+    }
+
     public ICreateSpecifications<ItemToFilter, PropertyType> not
     {
-      get
-      {
-        return new NegatedCriteriaFactory<ItemToFilter, PropertyType>(this);
-      }
+      get{ return new NegatedCriteriaFactory<ItemToFilter, PropertyType>(this);}
     }
   }
 }

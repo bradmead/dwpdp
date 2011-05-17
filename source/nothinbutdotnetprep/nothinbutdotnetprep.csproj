@@ -67,7 +67,7 @@
     <Compile Include="collections\ReadOnlySetOf.cs" />
     <Compile Include="infrastructure\EnumerableExtensions.cs" />
     <Compile Include="infrastructure\filtering\AnonymousCriteria.cs" />
-    <Compile Include="infrastructure\filtering\ComparableCriteriaFactory.cs" />
+    <Compile Include="infrastructure\filtering\ComparablePropertyAceesor.cs" />
     <Compile Include="infrastructure\filtering\CriteriaExtensions.cs" />
     <Compile Include="infrastructure\filtering\CriteriaFactory.cs" />
     <Compile Include="infrastructure\filtering\EqualToAny.cs" />

@@ -11,7 +11,7 @@ namespace nothinbutdotnetprep.infrastructure.ranges
       this.start = start;
     }
 
-    public bool contains(T value)
+    public bool contains(IComparable<T> value)
     {
       return value.CompareTo(start) > 0;
     }

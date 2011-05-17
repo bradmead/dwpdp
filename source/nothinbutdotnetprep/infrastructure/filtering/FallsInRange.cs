@@ -12,7 +12,7 @@ namespace nothinbutdotnetprep.infrastructure.filtering
       this.range = range;
     }
 
-    public bool matches(T item)
+    public bool matches(IComparable<T> item)
     {
       return range.contains(item);
     }

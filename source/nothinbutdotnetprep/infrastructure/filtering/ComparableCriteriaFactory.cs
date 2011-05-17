@@ -16,12 +16,12 @@ namespace nothinbutdotnetprep.infrastructure.filtering
 
     public IMatchAn<ItemToFilter> greater_than(PropertyType value)
     {
-      return create_using(new FallsInRange<PropertyType>(new ExclusiveRangeWithNoUpperBound<PropertyType>(value)));
+      return original.create_using(new FallsInRange<PropertyType>(new ExclusiveRangeWithNoUpperBound<PropertyType>(value)));
     }
 
     public IMatchAn<ItemToFilter> between(PropertyType start, PropertyType end)
     {
-      return create_using(new FallsInRange<PropertyType>(new InclusiveRange<PropertyType>(start, end)));
+      return original.create_using(new FallsInRange<PropertyType>(new InclusiveRange<PropertyType>(start, end)));
     }
 
     public IMatchAn<ItemToFilter> equal_to(PropertyType value)
