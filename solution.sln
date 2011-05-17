@@ -7,7 +7,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "build", "build.csproj", "{E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nothinbutdotnetprep.specs", "source\nothinbutdotnetprep.specs\nothinbutdotnetprep.specs.csproj", "{EF77F62B-1CC6-4C03-8198-26DB2D24EE75}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "codekata", "codekata\codekata.csproj", "{E96C433E-4B85-43C5-8A70-80DDB69DCD26}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E8C2F839-F5F3-4AB7-91FC-251F73408055}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		solution.vsmdi = solution.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = solution.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -23,6 +35,10 @@ Global
 		{EF77F62B-1CC6-4C03-8198-26DB2D24EE75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF77F62B-1CC6-4C03-8198-26DB2D24EE75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF77F62B-1CC6-4C03-8198-26DB2D24EE75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E96C433E-4B85-43C5-8A70-80DDB69DCD26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E96C433E-4B85-43C5-8A70-80DDB69DCD26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E96C433E-4B85-43C5-8A70-80DDB69DCD26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E96C433E-4B85-43C5-8A70-80DDB69DCD26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

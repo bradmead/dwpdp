@@ -1,0 +1,6 @@
+C:\Users\Nuthin\Documents\prep\codekata\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Nuthin\Documents\prep\codekata\bin\Debug\codekata.dll
+C:\Users\Nuthin\Documents\prep\codekata\bin\Debug\codekata.pdb
+C:\Users\Nuthin\Documents\prep\codekata\bin\Debug\nunit.framework.dll
+C:\Users\Nuthin\Documents\prep\codekata\obj\Debug\codekata.dll
+C:\Users\Nuthin\Documents\prep\codekata\obj\Debug\codekata.pdb
